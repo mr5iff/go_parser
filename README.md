@@ -116,9 +116,9 @@ end
 Push actions into Go.Board
 
 ```elixir
-iex> board = ActionsPusher.push(actions) 
 iex> alias Go.Board
 iex> alias Go.Board.Tools
+iex> board = ActionsPusher.push(actions) 
 iex> board |> Board.to_ascii_board |> IO.puts
 +O++O++++++++++++++
 O+OOXXX+++++++++XXX
@@ -141,13 +141,13 @@ OOXXXXOXX+++++XXO++
 ++OXXXXX+++++XXXXO+
 ```
 
-It is possible to extract all positions from board.history with...
+Extract all positions from board.history
 
 ```elixir
 iex> board.history |> Enum.map(&Tools.fengo_to_ascii_board(&1)) |> Enum.join("\n\n") |> IO.puts
 ```
 
-... or get all moves with...
+Extract all moves
 
 ```elixir
 iex> board.moves
