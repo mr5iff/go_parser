@@ -5,7 +5,7 @@
 Utility to parse sgf file into Tree/Node structure. 
 It can be used to extract a list of list of actions from file, and push them into Go.Board.
 
-It uses Erlang lexer (but not yacc) for tokenization. The lexer is a slightly modified version of [sgf-elixir](https://github.com/Trevoke/sgf-elixir), lexer/yacc branch.
+It uses Erlang lexer (but not yacc) for tokenization. The lexer is a slightly modified version of [Trevoke/sgf-elixir](https://github.com/Trevoke/sgf-elixir), lexer/yacc branch.
 
 The purpose of this project is to use Tree/Node for sgf editing. 
 
@@ -156,4 +156,6 @@ iex> board.moves
 
 At the moment, about 7400 branches over 7700 from [Kogo's Joseki Dictionary](http://waterfire.us/joseki.htm) are checked correctly.
 
-Remaining are on error, mostly because turn is not set correctly after stone placements. Solution is to set "PL" property on the faulty node.
+Remaining branches are on error, mostly because turn is not set correctly after stone placements. 
+
+TODO: Set "PL" property on the faulty nodes.
