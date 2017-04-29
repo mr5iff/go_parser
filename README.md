@@ -15,6 +15,7 @@ TODO:
 
 ## References
 Various references used in the project.
+  * [leex](http://erlang.org/doc/man/leex.html)
   * [sgf-elixir](https://github.com/Trevoke/sgf-elixir)
   * [sgf test file](http://www.red-bean.com/sgf/examples/)
   * [Kogo's Joseki Dictionary](http://waterfire.us/joseki.htm)
