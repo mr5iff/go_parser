@@ -25,7 +25,7 @@ defmodule GoParser.Parser do
   """  
   def parse_string(string) do
     {:ok, tokens, _end_line} = :sgf_lexer.string string |> String.to_charlist
-    tokens
+    tokens |> parse_tokens
   end
   
   def get_tree(filename), do: get_tokens(filename) |> parse_tokens
