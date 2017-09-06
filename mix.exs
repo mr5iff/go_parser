@@ -30,7 +30,7 @@ defmodule GoParser.Mixfile do
   defp deps do
     [
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.16", only: :dev, runtime: false}
     ]
   end
 end

@@ -20,6 +20,14 @@ defmodule GoParser.Parser do
     get_tree(filename)
   end
   
+  @doc ~S"""
+  Returns a new Tree structure from a string. eg: When data comes from db field
+  """  
+  def parse_string(string) do
+    {:ok, tokens, _end_line} = :sgf_lexer.string string |> String.to_charlist
+    tokens
+  end
+  
   def get_tree(filename), do: get_tokens(filename) |> parse_tokens
   
   
