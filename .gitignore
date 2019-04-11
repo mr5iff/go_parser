@@ -22,3 +22,6 @@ erl_crash.dump
 # Do not save erl and beam files
 /src/*.erl
 /src/*.beam
+
+.DS_Store
+.elixir_ls/

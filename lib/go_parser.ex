@@ -3,16 +3,9 @@ defmodule GoParser do
   Documentation for GoParser.
   """
 
-  @doc """
-  Hello world.
+  # Load file
+  # Load string
+  # Dump tree
+  # Game info
 
-  ## Examples
-
-      iex> GoParser.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end

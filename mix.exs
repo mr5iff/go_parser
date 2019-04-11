@@ -3,8 +3,8 @@ defmodule GoParser.Mixfile do
 
   def project do
     [app: :go_parser,
-     version: "0.1.0",
-     elixir: "~> 1.4",
+     version: "0.2.0",
+     elixir: "~> 1.6",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
@@ -29,8 +29,12 @@ defmodule GoParser.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.16", only: :dev, runtime: false}
+      # Devtools
+      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false},
+
+      # Documentation
+      {:ex_doc, "~> 0.20.1", only: :dev, runtime: false},
     ]
   end
 end
