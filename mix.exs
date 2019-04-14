@@ -2,12 +2,17 @@ defmodule GoParser.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :go_parser,
-     version: "0.2.0",
-     elixir: "~> 1.6",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :go_parser,
+      version: "0.2.0",
+      elixir: "~> 1.6",
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      deps: deps(),
+      dialyzer: [
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      ]
+    ]
   end
 
   # Configuration for the OTP application

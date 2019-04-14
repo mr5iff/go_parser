@@ -7,5 +7,5 @@ defmodule GoParser do
   # Load string
   # Dump tree
   # Game info
-
+  # Add parser (and remove trees)
 end
