@@ -30,6 +30,12 @@ defmodule GoParserTest do
     assert {:ok, _} = GoParser.load_string(string)
   end
 
+  test "can parse multiple trees" do
+    string = "(;FF[4]GM[1]SZ[19];B[aa];W[bb];B[cc];W[dd];B[ad];W[bd])(;FF[4]GM[1]SZ[19];B[aa];W[bb](;B[cc]N[Var A];W[dd];B[ad];W[bd])(;B[hh]N[Var B];W[hg])(;B[gg]N[Var C];W[gh];B[hh](;W[hg]N[Var A];B[kk])(;W[kl]N[Var B])))"
+    {:ok, trees} = GoParser.load_string string
+    assert length(trees) == 2
+  end
+
   # PARSING FILE
 
   test "can parse a file" do
