@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%
 
 Nonterminals
-trees tree nodes node variations variation properties property.
+trees tree nodes node variations variation properties property propvalues.
 
 %%%%%%%%%%%%%%%%%%%%
 %% Terminals
@@ -22,27 +22,7 @@ Rootsymbol trees.
 %% Rules
 %%%%%%%%%%%%%%%%%%%%
 
-% trees -> tree : ['$1'].
-% trees -> tree trees : ['$1'] ++ '$2'.
-
-% tree -> nodes : {tree, '$1'}.
-
-% variation -> '(' nodes ')' : {variation, '$2'}.
-% variation -> '(' nodes variation ')' : {variation, '$2', '$3'}.
-
-% nodes -> variation : ['$1'].
-% nodes -> variation nodes : ['$1'] ++ '$2'.
-
-% nodes -> node : ['$1'].
-% nodes -> node nodes : ['$1'] ++ '$2'.
-
-% node -> ';' properties : {node, '$2'}.
-
-% properties -> property : ['$1'].
-% properties -> property properties : ['$1'] ++ '$2'.
-
-% property -> propident propvalue : {property, '$1', '$2'}.
-
+% Sgf contains usually one game
 trees -> tree : ['$1'].
 trees -> tree trees : ['$1'] ++ '$2'.
 
@@ -57,12 +37,16 @@ nodes -> node : ['$1'].
 nodes -> node nodes : ['$1'] ++ '$2'.
 
 node -> ';' properties : {node, '$2', []}.
-node -> ';' properties variations : {node, '$2', ['$3']}.
+node -> ';' properties variations : {node, '$2', '$3'}.
 
 properties -> property : ['$1'].
 properties -> property properties : ['$1'] ++ '$2'.
 
-property -> propident propvalue : {property, list_to_binary(unwrap('$1')), list_to_binary(unwrap('$2'))}.
+% Some propvalues are on multiple lines! seeff4_ex.sgf
+propvalues -> propvalue : unwrap('$1').
+propvalues -> propvalue propvalues : unwrap('$1') ++ '$2'.
+
+property -> propident propvalues : {property, list_to_binary(unwrap('$1')), list_to_binary('$2')}.
 
 %%%%%%%%%%%%%%%%%%%%
 %% Code

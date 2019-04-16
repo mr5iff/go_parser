@@ -3,11 +3,17 @@ defmodule GoParser do
   Documentation for GoParser.
   """
 
+  @doc ~S"""
+  Parse directory and collect results.
+  """
   def load_dir(glob) do
     Path.wildcard(glob)
     |> Enum.map(&load_file(&1))
   end
 
+  @doc ~S"""
+  Parse file and returns {:ok, trees}.
+  """
   def load_file(filename) do
     case File.read(filename) do
       {:ok, sgf} ->
@@ -17,6 +23,9 @@ defmodule GoParser do
     end
   end
 
+  @doc ~S"""
+  Parse string and returns {:ok, trees}.
+  """
   def load_string(string) do
     with {:ok, tokens, _} <- lex_string(string),
       {:ok, trees} <- :sgf_parser.parse(tokens)
@@ -24,18 +33,13 @@ defmodule GoParser do
       {:ok, trees}
     else
       {:error, reason, _} -> {:error, reason}
-      #_ -> {:error, "cannot process input"}
       any -> any
     end
   end
 
   defp lex_string(string) do
-    string |> to_charlist |> :sgf_lexer.string
+    string
+    |> to_charlist
+    |> :sgf_lexer.string
   end
-
-  # Load file
-  # Load string
-  # Dump tree
-  # Game info
-  # Add parser (and remove trees)
 end
