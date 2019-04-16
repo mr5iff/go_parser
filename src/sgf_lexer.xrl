@@ -16,19 +16,35 @@
 % -- 'list of':    PropValue { PropValue }
 % -- 'elist of':   ((PropValue { PropValue }) | None)
 
+%%%%%%%%%%%%%%%%%%%%
+%% Definitions
+%%%%%%%%%%%%%%%%%%%%
+
 Definitions.
 
-WHITESPACE = [\s\t\n\r]
 PROPIDENT  = [A-Z]+
 PROPVALUE  = ((\[\])|(\[[^\[\]]+\])|(\[[^\[\]]+(\[.+\])+[^\[\]]+\]))+
 
+WHITESPACE     = [\s\t]
+TERMINATOR     = [\n\r]
+
+%%%%%%%%%%%%%%%%%%%%
+%% Rules
+%%%%%%%%%%%%%%%%%%%%
+
 Rules.
 
-\(            : {token, {'(', TokenLine}}.
-\)            : {token, {')', TokenLine}}.
-;             : {token, {';', TokenLine}}.
-{PROPIDENT}   : {token, {propident, TokenLine, TokenChars}}.
-{PROPVALUE}   : {token, {propvalue, TokenLine, TokenChars}}.
-{WHITESPACE}+ : skip_token.
+\(             : {token, {'(', TokenLine}}.
+\)             : {token, {')', TokenLine}}.
+;              : {token, {';', TokenLine}}.
+{PROPIDENT}    : {token, {propident, TokenLine, TokenChars}}.
+{PROPVALUE}    : {token, {propvalue, TokenLine, TokenChars}}.
+
+{WHITESPACE}+  : skip_token.
+{TERMINATOR}+  : skip_token.
+
+%%%%%%%%%%%%%%%%%%%%
+%% Erlang code
+%%%%%%%%%%%%%%%%%%%%
 
 Erlang code.
