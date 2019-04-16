@@ -7,7 +7,8 @@ defmodule GoParser do
   Parse directory and collect results.
   """
   def load_dir(glob) do
-    Path.wildcard(glob)
+    glob
+    |> Path.wildcard()
     |> Enum.map(&load_file(&1))
   end
 
