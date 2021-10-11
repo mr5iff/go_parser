@@ -46,7 +46,7 @@ properties -> property properties : ['$1'] ++ '$2'.
 propvalues -> propvalue : unwrap('$1').
 propvalues -> propvalue propvalues : unwrap('$1') ++ '$2'.
 
-property -> propident propvalues : {property, list_to_binary(unwrap('$1')), list_to_binary('$2')}.
+property -> propident propvalues : {property, unicode:characters_to_binary(unwrap('$1')), unicode:characters_to_binary('$2')}.
 
 %%%%%%%%%%%%%%%%%%%%
 %% Code
